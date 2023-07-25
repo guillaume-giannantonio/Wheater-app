@@ -58,6 +58,7 @@ function displayWeather(weatherData) {
 	removeContent()
 	displayLocation(weatherData.locationInfos)
 	createContainerSearch()
+	displayWeatherInfos(weatherData.weatherInfos)
 	body.style.justifyContent = 'space-between'
 }
 
@@ -73,4 +74,26 @@ function displayLocation(location) {
 	h2Country.textContent = location.country
 	locationDiv.append(h1, h2Time, h2Region, h2Country)
 	body.appendChild(locationDiv)
+}
+
+function displayWeatherInfos(weatherInfos) {
+	const weatherDiv = document.createElement('div')
+	const h1Condition = document.createElement('h1')
+	h1Condition.textContent = weatherInfos.condition
+	const h2Temp = document.createElement('h2')
+	h2Temp.textContent = 'Températures : ' + weatherInfos.tempC
+	const h2clouds = document.createElement('h2')
+	h2clouds.textContent = 'Clouds : ' + weatherInfos.cloud
+	const h2FeelsLike = document.createElement('h2')
+	h2FeelsLike.textContent = 'Feels like : ' + weatherInfos.feelsLike
+	const h2Humidity = document.createElement('h2')
+	h2Humidity.textContent = 'Humidity : ' + weatherInfos.humidity
+	const h2IsDay = document.createElement('h2')
+	h2IsDay.textContent = (weatherInfos.isDay ? 'Day' : 'Night')
+	const h2WindKph = document.createElement('h2')
+	h2WindKph.textContent = 'Wind k/h : ' + weatherInfos.windKph
+	const h2WindDir = document.createElement('h2')
+	h2WindDir.textContent = 'Wind dir : ' + weatherInfos.windDir
+	weatherDiv.append(h1Condition, h2Temp, h2clouds, h2FeelsLike, h2Humidity, h2IsDay, h2WindKph, h2WindDir)
+	body.appendChild(weatherDiv)
 }
