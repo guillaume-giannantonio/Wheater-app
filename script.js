@@ -40,6 +40,8 @@ function createContainerSearch() {
 	button.textContent = 'Search'
 	container.append(label, input, button)
 	button.addEventListener('click', async () => {
+		removeContent()
+		displayLoadingScreen()
 		const location = input.value
 		const weatherData = await loadWeatherData(location.toLowerCase())
 		console.log(weatherData)
@@ -96,4 +98,10 @@ function displayWeatherInfos(weatherInfos) {
 	h2WindDir.textContent = 'Wind dir : ' + weatherInfos.windDir
 	weatherDiv.append(h1Condition, h2Temp, h2clouds, h2FeelsLike, h2Humidity, h2IsDay, h2WindKph, h2WindDir)
 	body.appendChild(weatherDiv)
+}
+
+function displayLoadingScreen() {
+	const img = document.createElement('img')
+	img.src = './miles_morales_logo.png'
+	body.appendChild(img)
 }
